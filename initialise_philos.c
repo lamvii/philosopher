@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 22:08:20 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/06/19 01:42:06 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/06/19 02:17:47 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ t_philo	*new_philo(int id, int _meals, t_info *info)
 	if (!new || pthread_mutex_init(&(new->fork), NULL))
 		return (NULL);
 	new->id = id;
-	new->time_create = current_time();
+	new->time_create = 0;
 	new->last_meal = -1;
 	new->requerted_meals = _meals;
+	new->info = info;
 	new->next = NULL;
 	new->prev = NULL;
-	new->info = info;
 	return (new);
 }
 

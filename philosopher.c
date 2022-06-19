@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:07:26 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/06/19 01:00:27 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/06/19 02:18:06 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*pthread_handler(t_philo **philo)
 {
 	(*philo)->time_create = current_time();
-	//take fork of prev philethen you fork
+	//take fork of prev philethen your fork
 }
 
 void	creat_threads(t_philo **philo)
