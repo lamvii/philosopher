@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 22:08:20 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/06/21 02:04:00 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:44:00 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_info	*initialise_info(t_info **info, char **av)
 {
 	*info = malloc(sizeof(t_info));
-	if (!(*info))
+	if (!(*info) || pthread_mutex_init(&((*info)->message), NULL))
 		return (NULL);
 	(*info)->philo_nb = ft_atoi(av[1]);
 	(*info)->die_time = ft_atoi(av[2]);
@@ -39,7 +39,6 @@ t_philo	*new_philo(int id, int _meals, t_info *info)
 	new->requerted_meals = _meals;
 	new->info = info;
 	new->next = NULL;
-	new->prev = NULL;
 	printf("new philo id = %d is created\n", new->id);
 	return (new);
 }
@@ -85,5 +84,6 @@ int	initialise_philos(t_philo **philo, int ac, char **av)
 			return (FAILED);
 		add_philo_back(new, philo);
 	}
+	last_philo(*philo)->next = *philo;
 	return (SUCCESSE);
 }

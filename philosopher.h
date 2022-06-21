@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:07:48 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/06/21 01:23:56 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:43:13 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <unistd.h>
 # include <stdio.h>
 
-
 typedef struct s_info
 {
 	int				philo_nb;
@@ -32,6 +31,7 @@ typedef struct s_info
 	unsigned int	sleep_time;
 	int				aphilo_is_dead;
 	int				philos_full;
+	pthread_mutex_t	message;
 }					t_info;
 
 typedef struct s_philo
@@ -44,7 +44,6 @@ typedef struct s_philo
 	int				requerted_meals;
 	t_info			*info;
 	struct s_philo	*next;
-	struct s_philo	*prev;
 }					t_philo;
 
 //		check_arg.c
