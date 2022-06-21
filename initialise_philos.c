@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 22:08:20 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/06/19 02:17:47 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/06/21 02:04:00 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_philo	*new_philo(int id, int _meals, t_info *info)
 	new->info = info;
 	new->next = NULL;
 	new->prev = NULL;
+	printf("new philo id = %d is created\n", new->id);
 	return (new);
 }
 

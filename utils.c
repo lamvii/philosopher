@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:11:27 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/05/31 22:31:12 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/06/21 01:23:50 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@ int	ft_isdigit(int c)
 		return (1);
 	else
 		return (0);
+}
+
+int	ft_strlen(char *s)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = (char *)s;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
 }
 
 int	ft_atoi(const char *str)

@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:07:48 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/06/19 01:42:13 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/06/21 01:23:56 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 
 # include <pthread.h>
 # include <sys/time.h>
+# include <stdlib.h>
+# include <unistd.h>
 # include <stdio.h>
+
 
 typedef struct s_info
 {
@@ -51,6 +54,7 @@ int				arguments_valid(char **av);
 int				initialise_philos(t_philo **philo, int ac, char **av);
 
 //		utils.c
+int				ft_strlen(char *s);
 int				ft_atoi(const char *str);
 int				ft_isdigit(int c);
 unsigned int	current_time(void);
