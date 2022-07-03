@@ -6,13 +6,13 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:11:27 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/06/21 01:23:50 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/01 19:15:22 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-unsigned int	current_time(void)
+long long	current_time(void)
 {
 	struct timeval	time;
 

@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:07:48 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/06/21 18:43:13 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:29:41 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_info
 {
 	int				philo_nb;
 	int				die_time;
-	unsigned int	eat_time;
-	unsigned int	sleep_time;
+	long long		eat_time;
+	long long		sleep_time;
 	int				aphilo_is_dead;
 	int				philos_full;
 	pthread_mutex_t	message;
@@ -39,8 +39,8 @@ typedef struct s_philo
 	int				id;
 	pthread_t		phi;
 	pthread_mutex_t	fork;
-	unsigned int	time_create;
-	unsigned int	last_meal;
+	long long		time_create;
+	long long		last_meal;
 	int				requerted_meals;
 	t_info			*info;
 	struct s_philo	*next;
@@ -56,6 +56,6 @@ int				initialise_philos(t_philo **philo, int ac, char **av);
 int				ft_strlen(char *s);
 int				ft_atoi(const char *str);
 int				ft_isdigit(int c);
-unsigned int	current_time(void);
+long long		current_time(void);
 
 #endif
