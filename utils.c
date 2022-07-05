@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:11:27 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/01 19:15:22 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:44:16 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ long long	current_time(void)
 	if (gettimeofday(&time, NULL) == -1)
 		return (FAILED);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+long long	time_after_create(long long time_create)
+{
+	return (current_time() - time_create);
 }
 
 int	ft_isdigit(int c)

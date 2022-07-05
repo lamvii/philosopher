@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 22:11:08 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/06/19 00:38:55 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/05 18:23:42 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	arguments_valid(char **av)
 		if (ft_strlen(av[i]) > 10)
 			return (FAILED);
 	}
-	return (SUCCESSE);
+	return (SUCCESS);
 }

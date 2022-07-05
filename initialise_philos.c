@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 22:08:20 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/06/21 18:44:00 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/05 18:23:45 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_info	*initialise_info(t_info **info, char **av)
 	return (*info);
 }
 
-t_philo	*new_philo(int id, int _meals, t_info *info)
+t_philo	*new_philo(int id, int _meals, t_info **info)
 {
 	t_philo	*new;
 
@@ -37,9 +37,9 @@ t_philo	*new_philo(int id, int _meals, t_info *info)
 	new->time_create = 0;
 	new->last_meal = -1;
 	new->requerted_meals = _meals;
-	new->info = info;
+	new->philo_full = 0;
+	new->info = *info;
 	new->next = NULL;
-	printf("new philo id = %d is created\n", new->id);
 	return (new);
 }
 
@@ -63,17 +63,20 @@ void	add_philo_back(t_philo *new, t_philo **philo)
 	}
 }
 
-int	initialise_philos(t_philo **philo, int ac, char **av)
+int	initialise_philos(t_philo **philo, t_info **info, int ac, char **av)
 {
 	int		id;
 	t_philo	*new;
 	int		_meals;
-	t_info	*info;
 
 	id = 0;
 	_meals = -1;
-	info = NULL;
-	if (!initialise_info(&info, av))
+	if (!ft_atoi(av[1]))
+	{
+		printf("should be at least 1 philo \n");
+		return (FAILED);
+	}
+	if (!initialise_info(info, av))
 		return (FAILED);
 	if (ac == 6)
 		_meals = ft_atoi(av[5]);
@@ -85,5 +88,5 @@ int	initialise_philos(t_philo **philo, int ac, char **av)
 		add_philo_back(new, philo);
 	}
 	last_philo(*philo)->next = *philo;
-	return (SUCCESSE);
+	return (SUCCESS);
 }

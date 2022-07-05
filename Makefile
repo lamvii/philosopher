@@ -6,7 +6,7 @@
 #    By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/19 00:11:33 by ael-idri          #+#    #+#              #
-#    Updated: 2022/06/19 01:02:38 by ael-idri         ###   ########.fr        #
+#    Updated: 2022/07/05 18:28:55 by ael-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME	 	=	philo
 CC			=	cc
 FLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -rf
-SRCS	 	=	philosopher.c utils.c initialise_philos.c check_arg.c
+SRCS	 	=	philosopher.c utils.c initialise_philos.c check_arg.c		\
+				create_threads.c fails.c routines.c
 OBJS		=	$(SRCS:.c=.o)
 HEADER		=	philosopher.h
 
