@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 22:08:20 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/05 18:23:45 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/06 11:31:19 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,6 @@ int	initialise_philos(t_philo **philo, t_info **info, int ac, char **av)
 
 	id = 0;
 	_meals = -1;
-	if (!ft_atoi(av[1]))
-	{
-		printf("should be at least 1 philo \n");
-		return (FAILED);
-	}
 	if (!initialise_info(info, av))
 		return (FAILED);
 	if (ac == 6)

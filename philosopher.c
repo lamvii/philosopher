@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:07:26 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/05 17:44:27 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/06 12:30:27 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ int	main(int ac, char **av)
 	info = NULL;
 	if ((ac == 5 || ac == 6) && arguments_valid(av))
 	{
-		if (!initialise_philos(&philo, &info, ac, av))
-			return (fail_initialise(&philo, &info));
-		if (!create_threads(&philo))
-			return (fail_create(&philo));
-		if (monitoring(&philo))
-			return (1);
+		// if (!initialise_philos(&philo, &info, ac, av))
+		// 	return (fail_initialise(&philo, &info));
+		// if (!create_threads(&philo))
+		// 	return (fail_create(&philo));
+		// if (monitoring(&philo))
+		// 	return (1);
 	}
 	else
-		printf ("arguments not valid \n");
+		printf ("wach nta 7mar \n");
 	return (0);
 }
