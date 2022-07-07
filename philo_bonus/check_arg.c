@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_bonnus.c                                     :+:      :+:    :+:   */
+/*   check_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 18:47:33 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/07 16:57:34 by ael-idri         ###   ########.fr       */
+/*   Created: 2022/07/07 14:33:18 by ael-idri          #+#    #+#             */
+/*   Updated: 2022/07/07 14:33:21 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonnus.h"
 
-int	main(int ac, char **av)
+int	arguments_valid(char **av)
 {
-	t_philo	*philo;
-	t_info	*info;
+	int	i;
+	int	j;
 
-	philo = NULL;
-	info = NULL;
-	if ((ac == 5 || ac == 6) && arguments_valid(av))
+	i = 0;
+	while (av[++i])
 	{
-		if (!initialise_philos(&philo, &info, ac, av))
-			return (fail_initialise(&philo, &info));
-		if (!create_process(&philo))
-			return (fail_create(&philo));
-		if (monitor(&philo))
-			return (1);
-		stop_simulation(&philo);
+		j = -1;
+		while (av[i][++j])
+		{
+			if (!ft_isdigit(av[i][j]))
+				return (FAILED);
+		}
+		if (ft_atoi(av[i]) < 0)
+			return (FAILED);
 	}
-	else
-		printf ("wach nta 7mar \n");
-	return (0);
+	if (ft_atoi(av[1]) <= 0)
+	{
+		printf("should be at least 1 philo \n");
+		return (FAILED);
+	}
+	return (SUCCESS);
 }

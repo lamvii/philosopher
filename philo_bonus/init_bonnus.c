@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:43:04 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/06 20:06:38 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:38:24 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_info	*initialise_info(t_info **info, int _meals, char **av)
 	(*info)->eat_time = ft_atoi(av[3]);
 	(*info)->sleep_time = ft_atoi(av[4]);
 	(*info)->meals_required = _meals;
-	(*info)->fork = sem_open("forks", O_CREAT || O_EXCL, 0666, ft_atoi(av[1]));
+	sem_unlink("fork");
+	(*info)->fork = sem_open("fork", O_CREAT | O_EXCL, 0777, ft_atoi(av[1]));
 	if ((*info)->fork == SEM_FAILED)
 		return (NULL);
 	return (*info);
@@ -36,6 +37,7 @@ t_philo	*new_philo(int id, t_info **info)
 	if (!new)
 		return (NULL);
 	new->id = id;
+	new->pid = -2;
 	new->time_create = 0;
 	new->last_meal = -1;
 	new->nb_of_meals = 0;
@@ -83,6 +85,6 @@ int	initialise_philos(t_philo **philo, t_info **info, int ac, char **av)
 			return (FAILED);
 		add_philo_back(new, philo);
 	}
-	last_philo(*philo)->next = *philo;
+	// last_philo(*philo)->next = *philo;
 	return (SUCCESS);
 }

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_bonnus.c                                     :+:      :+:    :+:   */
+/*   create_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 18:47:33 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/07 16:57:34 by ael-idri         ###   ########.fr       */
+/*   Created: 2022/07/07 14:34:42 by ael-idri          #+#    #+#             */
+/*   Updated: 2022/07/07 17:28:39 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonnus.h"
 
-int	main(int ac, char **av)
+int	create_process(t_philo **philo)
 {
-	t_philo	*philo;
-	t_info	*info;
+	int		i;
+	pid_t	pid;
+	t_philo	*phi;
 
-	philo = NULL;
-	info = NULL;
-	if ((ac == 5 || ac == 6) && arguments_valid(av))
+	i = 0;
+	phi = *philo;
+	while (phi && ++i <= phi->info->philo_nb)
 	{
-		if (!initialise_philos(&philo, &info, ac, av))
-			return (fail_initialise(&philo, &info));
-		if (!create_process(&philo))
-			return (fail_create(&philo));
-		if (monitor(&philo))
-			return (1);
-		stop_simulation(&philo);
+		pid = fork();
+		if (pid < 0)
+			return (FAILED);
+		if (pid == 0)
+			process_routine(phi);
+		phi->pid = pid;
+		phi = phi->next;
 	}
-	else
-		printf ("wach nta 7mar \n");
-	return (0);
+	return (SUCCESS);
 }
