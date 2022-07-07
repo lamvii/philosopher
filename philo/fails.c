@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:24:50 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/05 17:26:01 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:26:11 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ int	stop_create(t_philo **philo)
 	free((*philo)->info);
 	while ((*philo) && philo_nb > 0)
 	{
-		pthread_mutex_destroy(&(*philo)->fork);
+		if (pthread_mutex_destroy(&(*philo)->fork))
+		{
+			pthread_mutex_unlock(&(*philo)->fork);
+			pthread_mutex_destroy(&(*philo)->fork);
+		}
 		temp = (*philo);
 		*philo = (*philo)->next;
 		free(temp);

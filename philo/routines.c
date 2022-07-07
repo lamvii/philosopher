@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:40:31 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/06 19:08:48 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/07 17:27:46 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,6 @@ void	*philo_routin(void	*data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
-	pthread_mutex_lock(&(philo->info->message));
-	printf("thread id: %d is created\n", philo->id);
-	pthread_mutex_unlock(&(philo->info->message));
 	philo->time_create = current_time();
 	while (1)
 	{
