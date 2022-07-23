@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:07:26 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/23 18:09:24 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:45:16 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		printf ("wach nta 7mar \n");
+		printf ("argument not valid\n");
 		return (1);
 	}
 	return (0);

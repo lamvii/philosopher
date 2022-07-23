@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:58:33 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/23 17:24:58 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:47:18 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ int	monitor(t_philo **philo)
 		kill(phi->pid, 9);
 		phi = phi->next;
 	}
-	return (1);
+	return (SUCCESS);
 }
