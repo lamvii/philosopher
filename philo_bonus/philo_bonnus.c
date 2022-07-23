@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:47:33 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/07 16:57:34 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/22 23:27:58 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 		if (!create_process(&philo))
 			return (fail_create(&philo));
 		if (monitor(&philo))
-			return (1);
+			return (0);
 		stop_simulation(&philo);
 	}
 	else

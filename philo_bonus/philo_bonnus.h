@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:57:07 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/07 17:36:53 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:47:17 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # include <sys/types.h>
 # include <pthread.h>
+# include <signal.h>
 # include <semaphore.h>
 # include <sys/time.h>
 # include <stdlib.h>
@@ -30,6 +31,9 @@
 typedef struct s_info
 {
 	sem_t		*fork;
+	sem_t		*message;
+	sem_t		*die;
+	sem_t		*full;
 	int			philo_nb;
 	int			die_time;
 	long long	eat_time;
@@ -61,6 +65,9 @@ int			initialise_philos(t_philo **philo, t_info **info,
 
 //		create_process.c
 int			create_process(t_philo **philo);
+
+//		proc_threads.c
+void		*process_thread(void *data);
 
 //		monitor.c
 int			monitor(t_philo **philo);

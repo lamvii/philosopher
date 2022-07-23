@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:15:18 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/07 16:52:41 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:56:12 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ int	exit_philo(t_philo **philo, t_info **info)
 	if (*info)
 	{
 		if (sem_close((*info)->fork))
+			printf("error close sem is not a valid semaphore descriptor\n");
+		if (sem_close((*info)->message))
+			printf("error close sem is not a valid semaphore descriptor\n");
+		if (sem_close((*info)->die))
+			printf("error close sem is not a valid semaphore descriptor\n");
+		if (sem_close((*info)->full))
 			printf("error close sem is not a valid semaphore descriptor\n");
 		free(*info);
 	}
@@ -34,19 +40,25 @@ int	exit_philo(t_philo **philo, t_info **info)
 int	stop_simulation(t_philo **philo)
 {
 	t_philo	*temp;
-	int		philo_nb;
 
-	if (sem_close((*philo)->info->fork))
-		printf("error close sem is not a valid semaphore descriptor\n");
-	philo_nb = (*philo)->info->philo_nb;
-	free((*philo)->info);
-	while ((*philo) && philo_nb > 0)
+	while ((*philo)->next)
 	{
 		temp = (*philo);
 		*philo = (*philo)->next;
 		free(temp);
-		philo_nb--;
 	}
+	if (sem_close((*philo)->info->fork))
+		printf("error close sem is not a valid semaphore descriptor\n");
+	if (sem_close((*philo)->info->message))
+		printf("error close sem is not a valid semaphore descriptor\n");
+	if (sem_close((*philo)->info->die))
+		printf("error close sem is not a valid semaphore descriptor\n");
+	if (sem_close((*philo)->info->full))
+		printf("error close sem is not a valid semaphore descriptor\n");
+	free((*philo)->info);
+	temp = (*philo);
+	*philo = (*philo)->next;
+	free(temp);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:34:42 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/07 17:28:39 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:12:35 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 int	create_process(t_philo **philo)
 {
-	int		i;
 	pid_t	pid;
 	t_philo	*phi;
 
-	i = 0;
 	phi = *philo;
-	while (phi && ++i <= phi->info->philo_nb)
+	while (phi)
 	{
 		pid = fork();
 		if (pid < 0)
