@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:07:48 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/07 14:43:42 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:07:40 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ void		sleeping_routin(t_philo **philo);
 void		thinking_routin(t_philo **philo);
 void		*philo_routin(void	*data);
 
+//		monitor.c
+int			monitoring(t_philo **philo);
+
 //		fails.c
+int			stop_routines(t_philo **philo);
 int			fail_create(t_philo **philo);
 int			fail_initialise(t_philo **philo, t_info **info);
 

@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:40:31 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/07 17:27:46 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:36:16 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	eating_routin(t_philo **philo)
 		time_after_create((*philo)->time_create), (*philo)->id);
 	pthread_mutex_unlock(&((*philo)->info->message));
 	usleep((*philo)->info->eat_time * 1000);
-	if ((*philo)->required_meals > 0)
+	if ((*philo)->required_meals >= 0)
 		(*philo)->required_meals--;
 	pthread_mutex_unlock(&((*philo)->next->fork));
 	pthread_mutex_unlock(&((*philo)->fork));

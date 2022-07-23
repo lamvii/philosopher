@@ -6,65 +6,11 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:07:26 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/06 19:06:02 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:09:24 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
-
-int	stop_routines(t_philo **philo)
-{
-	t_philo	*temp;
-	int		philo_nb;
-
-	philo_nb = (*philo)->info->philo_nb;
-	free((*philo)->info);
-	while ((*philo) && philo_nb > 0)
-	{
-		if (pthread_mutex_destroy(&(*philo)->fork))
-		{
-			pthread_mutex_unlock(&(*philo)->fork);
-			pthread_mutex_destroy(&(*philo)->fork);
-		}
-		temp = (*philo);
-		*philo = (*philo)->next;
-		free(temp);
-		philo_nb--;
-	}
-	return (1);
-}
-
-int	monitoring(t_philo **philo)
-{
-	while (*philo)
-	{
-		if ((*philo)->required_meals == 0 && (*philo)->philo_full == 0)
-		{
-			(*philo)->info->philos_full++;
-			(*philo)->philo_full = 1;
-			if ((*philo)->info->philos_full == (*philo)->info->philo_nb)
-			{
-				pthread_mutex_lock(&((*philo)->info->message));
-				printf("%lld: philosophers are full\n", time_after_create((*philo)->time_create));
-				return (stop_routines(philo));
-			}
-		}
-		if ((*philo)->last_meal == -1 && (time_after_create((*philo)->time_create) > (*philo)->info->die_time))
-		{
-			pthread_mutex_lock(&((*philo)->info->message));
-			printf("%lld: %d died\n", time_after_create((*philo)->time_create), (*philo)->id);
-			return (stop_routines(philo));
-		}
-		else if ((*philo)->last_meal != -1 && (current_time() - (*philo)->last_meal) > (*philo)->info->die_time)
-		{
-			pthread_mutex_lock(&((*philo)->info->message));
-			printf("%lld: %d died\n", time_after_create((*philo)->time_create), (*philo)->id);
-			return (stop_routines(philo));
-		}
-		(*philo) = (*philo)->next;
-	}
-	return (0);
-}
 
 int	main(int ac, char **av)
 {
@@ -79,10 +25,13 @@ int	main(int ac, char **av)
 			return (fail_initialise(&philo, &info));
 		if (!create_threads(&philo))
 			return (fail_create(&philo));
-		if (monitoring(&philo))
-			return (1);
+		if (!monitoring(&philo))
+			return (0);
 	}
 	else
+	{
 		printf ("wach nta 7mar \n");
+		return (1);
+	}
 	return (0);
 }
