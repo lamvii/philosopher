@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:15:18 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/23 17:56:12 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:45:43 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int	stop_simulation(t_philo **philo)
 		*philo = (*philo)->next;
 		free(temp);
 	}
-	if (sem_close((*philo)->info->fork))
-		printf("error close sem is not a valid semaphore descriptor\n");
-	if (sem_close((*philo)->info->message))
+	if (sem_close((*philo)->info->full) != 0)
 		printf("error close sem is not a valid semaphore descriptor\n");
 	if (sem_close((*philo)->info->die))
 		printf("error close sem is not a valid semaphore descriptor\n");
-	if (sem_close((*philo)->info->full))
+	if (sem_close((*philo)->info->fork))
+		printf("error close sem is not a valid semaphore descriptor\n");
+	if (sem_close((*philo)->info->message))
 		printf("error close sem is not a valid semaphore descriptor\n");
 	free((*philo)->info);
 	temp = (*philo);

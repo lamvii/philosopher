@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:58:33 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/23 18:47:18 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:45:11 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*monitor_full_thread(void *data)
 	return (NULL);
 }
 
-int	monitor(t_philo **philo)
+void	process_monitor(t_philo **philo)
 {
 	t_philo		*phi;
 	pthread_t	thread;
@@ -36,7 +36,7 @@ int	monitor(t_philo **philo)
 	if (pthread_create(&thread, NULL, monitor_full_thread, (void *)phi))
 	{
 		printf("fail create thread\n");
-		return (FAILED);
+		exit(FAILED);
 	}
 	sem_wait(phi->info->die);
 	while (phi)
@@ -44,5 +44,22 @@ int	monitor(t_philo **philo)
 		kill(phi->pid, 9);
 		phi = phi->next;
 	}
-	return (SUCCESS);
+	exit(SUCCESS);
+}
+
+int	monitor(t_philo **philo)
+{
+	pid_t		pid;
+	int			status;
+
+	pid = fork();
+	if (pid < 0)
+		return (FAILED);
+	if (pid == 0)
+		process_monitor(philo);
+	if (waitpid(pid, &status, 0) != pid)
+		printf("fail waiting proc monitor\n");
+	if (status)
+		return (SUCCESS);
+	return (FAILED);
 }

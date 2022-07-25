@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:47:33 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/23 18:48:19 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:46:33 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,6 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
+
+
+//should add myusleep in this case

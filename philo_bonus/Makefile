@@ -6,7 +6,7 @@
 #    By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 18:48:39 by ael-idri          #+#    #+#              #
-#    Updated: 2022/07/23 17:47:53 by ael-idri         ###   ########.fr        #
+#    Updated: 2022/07/25 14:43:20 by ael-idri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC			=	cc
 FLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -rf
 SRCS	 	=	philo_bonnus.c utils.c init_bonnus.c check_arg.c 			  \
-				monitor.c create_process.c fails.c	routines.c proc_threads.c
+				monitor.c create_process.c fails.c	routines.c proc_thread.c
 OBJS		=	$(SRCS:.c=.o)
 HEADER		=	philosopher.h
 

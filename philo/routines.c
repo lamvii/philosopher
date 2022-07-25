@@ -6,11 +6,20 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:40:31 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/19 15:36:16 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:28:03 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
+
+void	my_usleep(long long time_now, long long time_to_sleep)
+{
+	long long	end;
+
+	end = time_now + time_to_sleep;
+	while (current_time() <= end)
+		usleep(10);
+}
 
 void	eating_routin(t_philo **philo)
 {
@@ -25,7 +34,7 @@ void	eating_routin(t_philo **philo)
 	printf("%lld: %d is eating \n",
 		time_after_create((*philo)->time_create), (*philo)->id);
 	pthread_mutex_unlock(&((*philo)->info->message));
-	usleep((*philo)->info->eat_time * 1000);
+	my_usleep(current_time(), (*philo)->info->eat_time);
 	if ((*philo)->required_meals >= 0)
 		(*philo)->required_meals--;
 	pthread_mutex_unlock(&((*philo)->next->fork));
@@ -34,11 +43,11 @@ void	eating_routin(t_philo **philo)
 
 void	sleeping_routin(t_philo **philo)
 {
-	usleep((*philo)->info->sleep_time * 1000);
 	pthread_mutex_lock(&((*philo)->info->message));
 	printf("%lld: %d is sleeping \n",
 		time_after_create((*philo)->time_create), (*philo)->id);
 	pthread_mutex_unlock(&((*philo)->info->message));
+	my_usleep(current_time(), (*philo)->info->sleep_time);
 }
 
 void	thinking_routin(t_philo **philo)

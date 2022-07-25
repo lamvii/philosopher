@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:15:55 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/23 17:46:11 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/25 15:52:44 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ void	eating_routin(t_philo **philo)
 
 void	sleeping_routin(t_philo **philo)
 {
-	usleep((*philo)->info->sleep_time * 1000);
 	sem_wait((*philo)->info->message);
 	printf("%lld: %d is sleeping \n",
 		time_after_create((*philo)->time_create), (*philo)->id);
 	sem_post((*philo)->info->message);
+	usleep((*philo)->info->sleep_time * 1000);
 }
 
 void	thinking_routin(t_philo **philo)

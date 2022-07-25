@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 17:45:40 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/23 17:46:17 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:43:58 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_philo_full(t_philo *philo)
 	}
 }
 
-int	philo_died(t_philo *philo)
+void	philo_died(t_philo *philo)
 {
 	if (philo->last_meal == -1
 		&& (time_after_create(philo->time_create) > philo->info->die_time))
@@ -30,7 +30,6 @@ int	philo_died(t_philo *philo)
 		printf("%lld: %d died\n",
 			time_after_create(philo->time_create), philo->id);
 		sem_post(philo->info->die);
-		return (1);
 	}
 	if (philo->last_meal != -1
 		&& (current_time() - philo->last_meal) > philo->info->die_time)
@@ -39,9 +38,7 @@ int	philo_died(t_philo *philo)
 		printf("%lld: %d died\n",
 			time_after_create(philo->time_create), philo->id);
 		sem_post(philo->info->die);
-		return (1);
 	}
-	return (0);
 }
 
 void	*process_thread(void *data)
@@ -52,7 +49,6 @@ void	*process_thread(void *data)
 	while (SUCCESS)
 	{
 		check_philo_full(philo);
-		if (philo_died(philo))
-			return (NULL);
+		philo_died(philo);
 	}
 }
