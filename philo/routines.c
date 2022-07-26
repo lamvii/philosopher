@@ -6,7 +6,7 @@
 /*   By: ael-idri <ael-idri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:40:31 by ael-idri          #+#    #+#             */
-/*   Updated: 2022/07/25 17:28:03 by ael-idri         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:26:30 by ael-idri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	my_usleep(long long time_now, long long time_to_sleep)
 
 	end = time_now + time_to_sleep;
 	while (current_time() <= end)
-		usleep(10);
+		usleep(100);
 }
 
 void	eating_routin(t_philo **philo)
